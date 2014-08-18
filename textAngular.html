@@ -1,0 +1,28 @@
+<html ng-app="textApp">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script src="angular.js"></script>
+</head>
+
+<body>
+	<div ng-controller="textController">
+		<p>{{messages.someText}}</p>
+		<p ng-bind="messages.someText2"></p>
+	</div>
+<script>
+	var myAppModule = angular.module("textApp" , [] );
+	myAppModule.controller("textController",
+		function ( $scope ){
+			var messages = {};
+			messages.someText = "森　久1";
+			messages.someText2 = "森　久2";
+			$scope.messages = messages;
+		});
+</script>
+
+
+</body>
+
+</html>
+
+

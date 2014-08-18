@@ -1,0 +1,29 @@
+<html ng-app="myApp">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script src="angular.js"></script>
+</head>
+
+<body>
+	<div ng-controller="studentListController">
+		<ul>
+			<li ng-repeat="student in students">
+				id = {{student.id}}; name = {{student.name}};
+			</li>
+		</ul>
+	</div>
+<script>
+	var myAppModule = angular.module("myApp" , [] );
+	myAppModule.controller("studentListController",
+		function ( $scope ){
+			var students = [{name:"name1",id:"1"},{name:"name2",id:"2"},{name:"name3",id:"3"}];
+			$scope.students = students;
+		});
+</script>
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,46 @@
+<html ng-app="myApp">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script src="angular.js"></script>
+</head>
+
+<body>
+	<div ng-controller="startUpController">
+		<form>
+			<div>
+				<input type="checkbox" ng-model="check"/>
+				<span ng-bind="check"></span>
+				<span>{{check}}</span>
+			</div>
+			<div>
+				<input ng-change="computeNeeded()" ng-model="startingEstimete"/>
+				<span>{{needed}}</span>
+				<button ng-click="requestFunding()">submit</button>
+				<button ng-click="reset()">reset</button>
+			</div>		
+		</form>
+	</div>
+<script>
+	var myAppModule = angular.module("myApp" , [] );
+	myAppModule.controller("startUpController",
+		function ( $scope ){
+			$scope.computeNeeded = function(){
+				$scope.needed=$scope.startingEstimete*10;
+			};
+			$scope.requestFunding = function(){
+				window.alert("submit");
+			};
+			$scope.reset = function(){
+				$scope.check = false;
+				$scope.startingEstimete = 0;
+				$scope.needed = 0;
+			}
+		});
+</script>
+
+
+</body>
+
+</html>
+
+
