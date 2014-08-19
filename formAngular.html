@@ -1,4 +1,4 @@
-<html ng-app="myApp">
+<html ng-app="formApp">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<script src="angular.js"></script>
@@ -21,8 +21,8 @@
 		</form>
 	</div>
 <script>
-	var myAppModule = angular.module("myApp" , [] );
-	myAppModule.controller("startUpController",
+	var formModule = angular.module("formApp" , [] );
+	formModule.controller("startUpController",
 		function ( $scope ){
 			$scope.computeNeeded = function(){
 				$scope.needed=$scope.startingEstimete*10;

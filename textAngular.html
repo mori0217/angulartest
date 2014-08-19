@@ -10,8 +10,8 @@
 		<p ng-bind="messages.someText2"></p>
 	</div>
 <script>
-	var myAppModule = angular.module("textApp" , [] );
-	myAppModule.controller("textController",
+	var textModule = angular.module("textApp" , [] );
+	textModule.controller("textController",
 		function ( $scope ){
 			var messages = {};
 			messages.someText = "森　久1";
