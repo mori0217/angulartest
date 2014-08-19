@@ -26,14 +26,6 @@
 			</tr>
 		</table>
 	</div>
-	<div ng-controller="deathrayMenuController">
-		<button ng-click="toggleMenu()">メニューをトグル</button>
-		<ul ng-show="menuState.show">
-			<li ng-click="stun()">気絶</li>
-			<li ng-click="disintegrate()">崩壊</li>
-			<li ng-click="erase()">歴史から消去</li>
-		</ul>
-	</div>
 <script>
 	var listModule = angular.module("listApp" , [] );
 	listModule.controller("studentListController",
@@ -43,18 +35,9 @@
 
 			$scope.insertTom = function(){
 				var length = students.length;
-				$scope.students.splice(length,0,{name:"tom",id:length + 1});
+				$scope.students.splice( length, 0, {name:"tom",id:length + 1});
 			};
 		});
-	listModule.controller("deathrayMenuController",
-		function ( $scope ){
-			$scope.menuState = {show: false};
-
-			$scope.toggleMenu = function(){
-				$scope.menuState.show = !$scope.menuState.show;
-			};
-		});
-	
 </script>
 
 

@@ -1,0 +1,33 @@
+<html ng-app="styleApp">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script src="angular.js"></script>
+</head>
+
+<body>
+	<div ng-controller="deathrayMenuController">
+		<button ng-click="toggleMenu()">メニューをトグル</button>
+		<ul ng-show="menuState.show">
+			<li ng-click="stun()">気絶</li>
+			<li ng-click="disintegrate()">崩壊</li>
+			<li ng-click="erase()">歴史から消去</li>
+		</ul>
+	</div>
+<script>
+	var styleModule = angular.module("styleApp" , [] );
+	styleModule.controller("deathrayMenuController",
+		function ( $scope ){
+			$scope.menuState = {show: false};
+
+			$scope.toggleMenu = function(){
+				$scope.menuState.show = !$scope.menuState.show;
+			};
+		});
+</script>
+
+
+</body>
+
+</html>
+
+
