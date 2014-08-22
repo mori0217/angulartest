@@ -2,13 +2,18 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<script src="angular.js"></script>
+	<style type="text/css">
+	.menu-disabled-true {
+		color : gray;
+	}
+	</style>
 </head>
 
 <body>
 	<div ng-controller="deathrayMenuController">
 		<button ng-click="toggleMenu()">メニューをトグル</button>
 		<ul ng-show="menuState.show">
-			<li ng-click="stun()">気絶</li>
+			<li class="menu-disabled-{{isDisabled}}" ng-click="stun()">気絶</li>
 			<li ng-click="disintegrate()">崩壊</li>
 			<li ng-click="erase()">歴史から消去</li>
 		</ul>
@@ -19,9 +24,13 @@
 	styleModule.controller("deathrayMenuController",
 		function ( $scope ){
 			$scope.menuState = {show: false};
-
 			$scope.toggleMenu = function(){
 				$scope.menuState.show = !$scope.menuState.show;
+			};
+
+			$scope.isDisabled = false;
+			$scope.stun = function(){
+				$scope.isDisabled = true;
 			};
 		});
 </script>
