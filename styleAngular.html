@@ -6,6 +6,15 @@
 	.menu-disabled-true {
 		color : gray;
 	}
+	.error {
+		background-color: red;
+	}
+	.warning {
+		background-color: yellow;
+	}
+	.selected {
+		background-color: lightgreen;
+	}
 	</style>
 </head>
 
@@ -18,7 +27,13 @@
 			<li ng-click="erase()">歴史から消去</li>
 		</ul>
 	</div>
-
+	<div ng-controller="headerController">
+		<div ng-class="{error: isError, warning: isWarning}">
+			{{messageText}}
+		</div>
+		<button ng-click="showError()">エラーを発生させる</button>
+		<button ng-click="showWarning()">警告を発生させる</button>
+	</div>
 <script>
 	var styleModule = angular.module("styleApp" , [] );
 	styleModule.controller("deathrayMenuController",
@@ -31,6 +46,24 @@
 			$scope.isDisabled = false;
 			$scope.stun = function(){
 				$scope.isDisabled = true;
+			};
+		});
+	styleModule.controller("headerController",
+		function( $scope ){
+			$scope.messageText ="正常です";
+			$scope.isError = false;
+			$scope.isWarning = false;
+
+			$scope.showError = function(){
+				$scope.messageText = "エラー発生";
+				$scope.isError = true;
+				$scope.isWarning = false;
+			};
+
+			$scope.showWarning = function(){
+				$scope.messageText = "単なる警告です";
+				$scope.isError = false;
+				$scope.isWarning = true;
 			};
 		});
 </script>
