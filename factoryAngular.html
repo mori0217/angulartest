@@ -1,0 +1,36 @@
+<html ng-app="shoppingModule">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script src="angular.js"></script>
+</head>
+
+<body>
+	<div ng-controller="shoppingController">
+		<div ng-repeat="item in items">
+			<span>{{item.title}}</span>
+			<span>{{item.description}}</span>
+			<span>{{item.price | number:0 | currency}}</span>
+		</div>
+	</div>
+<script>
+	var shoppingModule = angular.module("shoppingModule", []);
+	shoppingModule.factory("Items",function(){
+		var items = {};
+		items.query = function(){
+			return [
+				{title:"タイトル1",description:"説明1",price:3.95},		
+				{title:"タイトル2",description:"説明2",price:2.95},		
+				{title:"タイトル3",description:"説明3",price:6.95}		
+			]
+		};
+		return items;
+	});
+	shoppingModule.controller("shoppingController",function($scope,Items){
+		$scope.items = Items.query();
+	});
+</script>
+
+</body>
+
+</html>
+
