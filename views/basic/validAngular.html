@@ -1,0 +1,36 @@
+<html ng-app="validApp">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script src="../../js/angular.js"></script>
+</head>
+
+<body>
+	<div ng-controller="validController">
+	<h1>登録フォーム</h1>
+	<form name="addUserForm">
+		<div ng-show="message">{{message}}</div>
+		<div>ファーストネーム: <input name="firstName" ng-model="user.first" required></div>
+		<div>ラストネーム: <input ng-model="user.last" required></div>
+		<div>メールアドレス: <input type="email" ng-model="user.email" required></div>
+		<div>年齢: <input type="number" ng-model="user.age" ng-maxlength="3" ng-min="1"></div>
+		<div><button ng-click="addUser()" ng-disabled="!addUserForm.$valid">送信</button></div>
+	</form>
+	</div>
+<script>
+	var validModule = angular.module("validApp" , [] );
+	validModule.controller("validController",
+		function ( $scope ){
+			$scope.message = "";
+			$scope.addUser = function () {
+			// データベースへの保存処理については、読者への課題とします
+			$scope.message = $scope.user.first + "さんが登録されました!";
+		};
+	});
+</script>
+
+
+</body>
+
+</html>
+
+
